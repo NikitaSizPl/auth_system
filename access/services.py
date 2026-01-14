@@ -2,18 +2,20 @@ from access.models import AccessRule
 
 
 def has_permission(user, element_code, action, is_owner=False):
-    if not user:
+    if not user or not user.is_authenticated:
         return False
 
     rule = AccessRule.objects.filter(
         role=user.role,
-        element__code=element_code
+        element__code=element_code 
     ).first()
 
     if not rule:
         return False
 
     if action == 'read':
+        if is_owner is None: 
+            return rule.read_all_permission
         return rule.read_all_permission or (rule.read_permission and is_owner)
 
     if action == 'create':
