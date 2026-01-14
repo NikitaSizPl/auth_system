@@ -1,9 +1,7 @@
 import bcrypt
 import jwt
 from datetime import datetime, timedelta
-
-JWT_SECRET = 'super-secret-key'
-JWT_ALGORITHM = 'HS256'
+from app.settings import JWT_SECRET,JWT_ALGORITHM
 
 
 def hash_password(password: str) -> str:
@@ -22,7 +20,7 @@ def check_password(password: str, hashed: str) -> bool:
 
 def generate_token(user_id):
     payload = {
-        "user_id": str(user_id),
+        "user_id": int( user_id ),
         "exp": datetime.utcnow() + timedelta(hours=2)
     }
     token = jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
