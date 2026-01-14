@@ -1,21 +1,28 @@
 from django.db import models
 import uuid
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
-class AppUser(models.Model):
-    id = models.UUIDField(primary_key=True,default=uuid.uuid4, editable=False)
 
+class UserManager(BaseUserManager):
+    def create_user(self, email, password=None):
+        user = self.model(email=self.normalize_email(email))
+        user.set_password(password)
+        user.save()
+        return user
+
+# Модель пользователя
+class AppUser(AbstractBaseUser):
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=255)
-
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-
-    role = models.ForeignKey( 'access.Role', on_delete=models.PROTECT, related_name='users' )
-
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    middle_name = models.CharField(max_length=50, blank=True)
     is_active = models.BooleanField(default=True)
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    role = models.ForeignKey(
+        'access.Role',
+        on_delete=models.SET_NULL,
+        null=True
+    )
 
-    def __str__(self):
-        return self.email
+    USERNAME_FIELD = 'email'
+    objects = UserManager()
