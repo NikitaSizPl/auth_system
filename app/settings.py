@@ -131,3 +131,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JWT_SECRET = config('JWT_SECRET')
 JWT_ALGORITHM = config('JWT_ALGORITHM', default='HS256')
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'users.authentication.JWTAuthentication', 
+    ],
+}
+
+AUTH_USER_MODEL = 'users.AppUser'
