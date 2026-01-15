@@ -33,24 +33,37 @@ Role + BusinessElement + Permissions
 
 ### API endpoints
 
-регистрация пользователя POST запрос (email, password, first_name, last_name, role=user)
+регистрация пользователя POST запрос (email, password, password_repeat, first_name, last_name)
 - api/auth/register/
+
 
 авторизация пользователя POST запрос (email, password)
 - api/auth/login/
 
+
 личный профиль пользователя GET, PATH, DELETE запрос
 - api/auth/profile/
+
 
 выход из системы POST запрос
 - api/auth/logout/
 
+
 отобразить всех пользователей GET запрос (доступно только role = admin)
 - api/auth/all/
 
-- api/access/
-- api/access/
-- api/access/
+
+отобразить правила доступа 
+- api/access/rules/
+
+
+оиобразить правило доступа по id
+- api/access/rules/<int:rule_id>/
+
+
+отобразить заказы 
+- api/access/orders/
+
 
 ### Deploy
 1. Скачать проект
