@@ -32,14 +32,14 @@ Role + BusinessElement + Permissions
 - psycopg2-binary
 
 
-### Repositories
+### Deploy
 1. Скачать проект
 
-https://github.com/NikitaSizPl/auth_system.git
+- https://github.com/NikitaSizPl/auth_system.git
 
 2. Перейти в папку проекта 
 
-cd auth_system
+- cd auth_system
 
 3. Настроить виртуальное окружение
 
