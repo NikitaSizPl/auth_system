@@ -31,6 +31,9 @@ Role + BusinessElement + Permissions
 - PostgreSQL
 - psycopg2-binary
 
+### API endpoints
+- 
+
 
 ### Deploy
 1. Скачать проект
@@ -43,22 +46,22 @@ Role + BusinessElement + Permissions
 
 3. Настроить виртуальное окружение
 
-python3 -m .venv venv
-venv\Scripts\activate
+- python3 -m .venv venv
+- source .venv/bin/activate
 
 4. Установить зависимости
 
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 5. Приминить миграции
 
-python manage.py makemigrations
-python manage.py migrate
+- python manage.py makemigrations
+- python manage.py migrate
 
 6. Тестовые данные 
 
-python manage.py loaddata fixtures.json
+- python manage.py loaddata fixtures.json
 
 7. Запуск сервера 
 
-python manage.py runserver
+- python manage.py runserver
