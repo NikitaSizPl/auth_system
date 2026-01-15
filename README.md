@@ -32,8 +32,25 @@ Role + BusinessElement + Permissions
 - psycopg2-binary
 
 ### API endpoints
-- 
 
+регистрация пользователя POST запрос (email, password, first_name, last_name, role=user)
+- api/auth/register/
+
+авторизация пользователя POST запрос (email, password)
+- api/auth/login/
+
+личный профиль пользователя GET, PATH, DELETE запрос
+- api/auth/profile/
+
+выход из системы POST запрос
+- api/auth/logout/
+
+отобразить всех пользователей GET запрос (доступно только role = admin)
+- api/auth/all/
+
+- api/access/
+- api/access/
+- api/access/
 
 ### Deploy
 1. Скачать проект
